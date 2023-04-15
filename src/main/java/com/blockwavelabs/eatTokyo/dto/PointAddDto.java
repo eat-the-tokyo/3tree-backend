@@ -8,4 +8,5 @@ import lombok.NoArgsConstructor;
 public class PointAddDto {
     private Double value;
     private String userEmail;
+    private String kind;
 }
