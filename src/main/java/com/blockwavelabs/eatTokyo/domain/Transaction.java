@@ -3,6 +3,7 @@ package com.blockwavelabs.eatTokyo.domain;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -29,12 +30,28 @@ public class Transaction {
     @CreationTimestamp
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    private String txnHashId;
+    private String escrowId;
+
+    private String link;
+
+    private String hashedPassword;
+
+    @ColumnDefault("false")
+    private Boolean IsWrappedReceived;
 
     @Builder
-    public Transaction(User user, String salt, String txnHashId) {
+    public Transaction(User user, String salt, String escrowId, String link, String hashedPassword) {
         this.user = user;
         this.salt = salt;
-        this.txnHashId = txnHashId;
+        this.escrowId = escrowId;
+        this.link = link;
+        this.hashedPassword = hashedPassword;
+    }
+
+    @Builder
+    public Transaction(User user, String salt, String hashedPassword) {
+        this.user = user;
+        this.salt = salt;
+        this.hashedPassword = hashedPassword;
     }
 }
