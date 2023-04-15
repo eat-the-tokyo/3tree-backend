@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PointRepository extends JpaRepository<Point, Long> {
-    Optional<List<Point>> findAllByUser(User user);
+    // Optional<List<Point>> findAllByUser(User user);
 
-    @Query("SELECT SUM(p.value) FROM Point p Where p.user = :user")
-    Double sumAllValueByUser(@Param("user") User user);
+//    @Query("SELECT SUM(p.value) FROM Point p Where p.user = :user")
+//    Double sumAllValueByUser(@Param("user") User user);
 
 
 }
