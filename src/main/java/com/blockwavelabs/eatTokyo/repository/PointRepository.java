@@ -14,4 +14,6 @@ public interface PointRepository extends JpaRepository<Point, Long> {
 
     @Query("SELECT SUM(p.value) FROM Point p Where p.user = :user")
     Double sumAllValueByUser(@Param("user") User user);
+
+
 }
