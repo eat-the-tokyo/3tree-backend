@@ -13,12 +13,14 @@ public class PointInfoDto {
     private Long id;
     private Double value;
     private String userEmail;
+    private String kind;
 
     @Builder
-    public PointInfoDto(Long id, Double value, String userEmail) {
+    public PointInfoDto(Long id, Double value, String userEmail, String kind) {
         this.id = id;
         this.value = value;
         this.userEmail = userEmail;
+        this.kind = kind;
     }
 
     public static PointInfoDto of(Point point){
@@ -26,6 +28,7 @@ public class PointInfoDto {
                 .id(point.getId())
                 .value(point.getValue())
                 .userEmail(point.getUser().getEmail())
+                .kind(point.getKind())
                 .build();
     }
 }
