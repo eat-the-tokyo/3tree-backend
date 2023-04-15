@@ -19,9 +19,14 @@ public class Controller {
 
     @GetMapping("/points")
     public ResponseEntity<ResultDto<List<PointInfoDto>>> getPoints(@RequestParam(value = "user_email") String userEmail) throws Exception {
-        System.out.println("getIn");
         List<PointInfoDto> pointInfoDtos = pointService.getAllPoints(userEmail);
         return ResponseEntity.ok(ResultDto.res(HttpStatus.OK, HttpStatus.OK.toString(), pointInfoDtos));
+    }
+
+    @GetMapping("/points/total")
+    public ResponseEntity<ResultDto<Double>> getSumPoints(@RequestParam(value = "user_email") String userEmail) throws Exception {
+        Double sumPoints = pointService.getSumPoints(userEmail);
+        return ResponseEntity.ok(ResultDto.res(HttpStatus.OK, HttpStatus.OK.toString(), sumPoints));
     }
 
 }
