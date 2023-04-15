@@ -24,10 +24,13 @@ public class Point {
 
     private Double value;
 
+    private String kind;
+
     @Builder
-    public Point(User user, Double value) {
+    public Point(User user, Double value, String kind) {
         this.user = user;
         this.value = value;
+        this.kind = kind;
     }
 
 }
