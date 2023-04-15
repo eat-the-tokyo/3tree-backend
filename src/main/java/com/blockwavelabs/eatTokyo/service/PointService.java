@@ -31,4 +31,12 @@ public class PointService {
                 .forEach(Point -> allPoints.add(PointInfoDto.of(Point)));
         return allPoints;
     }
+
+    @Transactional(readOnly = true)
+    public Double getSumPoints(String userEmail) throws Exception {
+        User user = userRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new Exception(HttpStatus.NOT_FOUND.toString()));
+
+        return pointRepository.sumAllValueByUser(user);
+    }
 }
